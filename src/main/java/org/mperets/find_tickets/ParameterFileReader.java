@@ -1,6 +1,7 @@
 package org.mperets.find_tickets;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ public class ParameterFileReader {
     public List<SearchParameters> read ()
     {
         String line;
+        List<SearchParameters> results = new ArrayList<>();
+
         try (
                 InputStream fis = FileInputStream.class.getResourceAsStream(FILE_NAME);
                 InputStreamReader isr = new InputStreamReader(fis);
@@ -20,19 +23,19 @@ public class ParameterFileReader {
             )
         {
             while ((line = br.readLine()) != null) {
-
-                System.out.println(line);
+                SearchParameters searchParameters = new SearchParameters(line);
+                results.add(searchParameters);
             }
     } catch (IOException e)
         {
             e.printStackTrace();
         }
-        return null;
+        return results;
     }
 
     public static void main (String[] args)
     {
-        new ParameterFileReader().read();
+        System.out.println(new ParameterFileReader().read());
     }
 }
 

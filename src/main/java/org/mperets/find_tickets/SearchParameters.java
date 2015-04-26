@@ -21,10 +21,10 @@ public class SearchParameters {
         this.freeDate = freeDate;
     }
 
-    public SearchParameters(String departureAirport) {
+    public SearchParameters(String departureAirport, Date baseDate) {
         this.departureAirport = departureAirport;
         arrivalAirport = "IEV";
-        arrivalDate = new Date(System.currentTimeMillis()+ TimeUnit.DAYS.toMillis(45));
+        arrivalDate = baseDate;
         departureDate = new Date(arrivalDate.getTime()+TimeUnit.DAYS.toMillis(14));
         freeDate = true;
     }

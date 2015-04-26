@@ -14,8 +14,15 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        SearchParameters searchParameters = new SearchParameters("", "", new Date(), new Date(), true);
-        String urlString = new CheapTicketsURLPreparer(searchParameters).createURLString();
-        new Requester().getHtml(Collections.singletonList(urlString));
+        ParameterFileReader parameterFileReader = new ParameterFileReader();
+        List<SearchParameters> searchParameterList = parameterFileReader.read();
+        Collection<String> urlString = new ArrayList<>();
+        for (SearchParameters searchParameter : searchParameterList)
+        {
+            CheapTicketsURLPreparer cheapTicketsURLPreparer = new CheapTicketsURLPreparer(searchParameter);
+            urlString.add(cheapTicketsURLPreparer.createURLString());
+        }
+
+        new Requester().getHtml(urlString);
     }
 }

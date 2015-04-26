@@ -33,13 +33,7 @@ public class CheapTicketsURLPreparer implements URLPreparer {
         return URL;
     }
 
-    public static void main (String[] args)
-    {
-       CheapTicketsURLPreparer cheapTicketsURLPreparer = new CheapTicketsURLPreparer(new SearchParameters("NYC"));
-        System.out.println(cheapTicketsURLPreparer.createURLString());
-    }
-
-    private static String formatURLDate(Date dateD) {
+     private static String formatURLDate(Date dateD) {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
         return URLEncoder.encode(dateFormat.format(dateD));
     }

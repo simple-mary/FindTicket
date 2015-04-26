@@ -1,6 +1,7 @@
 package org.mperets.find_tickets;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by User on 13.04.15.
@@ -23,8 +24,8 @@ public class SearchParameters {
     public SearchParameters(String departureAirport) {
         this.departureAirport = departureAirport;
         arrivalAirport = "IEV";
-        arrivalDate = new Date();
-        departureDate = new Date();
+        arrivalDate = new Date(System.currentTimeMillis()+ TimeUnit.DAYS.toMillis(45));
+        departureDate = new Date(arrivalDate.getTime()+TimeUnit.DAYS.toMillis(14));
         freeDate = true;
     }
 

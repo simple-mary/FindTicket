@@ -1,6 +1,7 @@
 package org.mperets.find_tickets;
 
 import javax.swing.text.DateFormatter;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,7 +23,7 @@ public class CheapTicketsURLPreparer implements URLPreparer {
 
 
         String URL = "http://www.cheaptickets.com/shop/home?type=air&ar.type=roundTrip&strm=true&ar.rt.leaveSlice.orig.key="+
-        searchParameters.getDepartureAirport() + "&ar.rt.leaveSlice.dest.key=" + searchParameters.getArrivalAirport()+
+        searchParameters.getArrivalAirport() + "&ar.rt.leaveSlice.dest.key=" + searchParameters.getDepartureAirport()+
                 "&_ar.rt.leaveSlice.destinationRadius=0&ar.rt.leaveSlice.date=" + formatURLDate(searchParameters.getArrivalDate()) +
                 "&ar.rt.returnSlice.date="+formatURLDate(searchParameters.getDepartureDate()) +
                 "&ar.rt.returnSlice.time=Anytime&_ar.rt.flexAirSearch=0&ar.rt.numAdult=1&ar.rt.numSenior=0" +
@@ -34,7 +35,8 @@ public class CheapTicketsURLPreparer implements URLPreparer {
 
     public static void main (String[] args)
     {
-
+       CheapTicketsURLPreparer cheapTicketsURLPreparer = new CheapTicketsURLPreparer(new SearchParameters("NYC"));
+        System.out.println(cheapTicketsURLPreparer.createURLString());
     }
 
     private static String formatURLDate(Date dateD) {

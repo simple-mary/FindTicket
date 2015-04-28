@@ -18,7 +18,6 @@ public class Requester
         Collection<String> result = new ArrayList<String>(URLs.size());
         try
         {
-
             for(String stringUrl : URLs)
             {
                 URL url = new URL(stringUrl);
@@ -33,7 +32,7 @@ public class Requester
         {
             System.out.println("ERROR" + ex);
         }
-        System.out.println(result);
+//        System.out.println(result);
         return result;
     }
 

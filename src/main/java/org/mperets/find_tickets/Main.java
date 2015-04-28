@@ -23,6 +23,10 @@ public class Main {
             urlString.add(cheapTicketsURLPreparer.createURLString());
         }
 
-        new Requester().getHtml(urlString);
+        Collection <String> htmls = new Requester().getHtml(urlString);
+        for (String html:htmls)
+        {
+            new PriceParser().findPrice(html);
+        }
     }
 }
